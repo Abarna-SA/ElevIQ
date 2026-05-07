@@ -288,7 +288,7 @@ The web app is optimized for Vercel deployment.
 
 ## 📜 License
 
-**Private** — All rights reserved. © 2026 ElevIQ / Saai Sidd.
+**Private** — All rights reserved. © 2026 ElevIQ.
 
 ---
 
