@@ -1,0 +1,6 @@
+{
+    "buildCommand": "cd eleviq_web && npm run build",
+    "outputDirectory": "eleviq_web/.next",
+    "installCommand": "cd eleviq_web && npm install",
+    "framework": "nextjs"
+}

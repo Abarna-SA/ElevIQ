@@ -1,0 +1,31 @@
+
+> eleviq_web@0.1.0 lint
+> eslint
+
+[BABEL] Note: The code generator has deoptimised the styling of C:\Users\User\Desktop\ElevIQ\eleviq_web\.firebase\elev-iq\functions\.next\dev\server\chunks\ssr\node_modules_4ce5c496._.js as it exceeds the max of 500KB.
+[BABEL] Note: The code generator has deoptimised the styling of C:\Users\User\Desktop\ElevIQ\eleviq_web\.firebase\elev-iq\functions\.next\dev\server\chunks\ssr\node_modules_0153275a._.js as it exceeds the max of 500KB.
+[BABEL] Note: The code generator has deoptimised the styling of C:\Users\User\Desktop\ElevIQ\eleviq_web\.firebase\elev-iq\functions\.next\dev\server\chunks\ssr\node_modules_@grpc_grpc-js_c1502fba._.js as it exceeds the max of 500KB.
+[BABEL] Note: The code generator has deoptimised the styling of C:\Users\User\Desktop\ElevIQ\eleviq_web\.firebase\elev-iq\functions\.next\dev\server\chunks\ssr\node_modules_motion-dom_dist_es_41b7f018._.js as it exceeds the max of 500KB.
+[BABEL] Note: The code generator has deoptimised the styling of C:\Users\User\Desktop\ElevIQ\eleviq_web\.firebase\elev-iq\functions\.next\dev\server\chunks\ssr\node_modules_next_dist_3e1f69b5._.js as it exceeds the max of 500KB.
+[BABEL] Note: The code generator has deoptimised the styling of C:\Users\User\Desktop\ElevIQ\eleviq_web\.firebase\elev-iq\functions\.next\dev\server\chunks\ssr\node_modules_zod_v4_62e2e60b._.js as it exceeds the max of 500KB.
+[BABEL] Note: The code generator has deoptimised the styling of C:\Users\User\Desktop\ElevIQ\eleviq_web\.firebase\elev-iq\functions\.next\dev\static\chunks\node_modules_606b74cb._.js as it exceeds the max of 500KB.
+[BABEL] Note: The code generator has deoptimised the styling of C:\Users\User\Desktop\ElevIQ\eleviq_web\.firebase\elev-iq\functions\.next\dev\static\chunks\node_modules_fce56106._.js as it exceeds the max of 500KB.
+[BABEL] Note: The code generator has deoptimised the styling of C:\Users\User\Desktop\ElevIQ\eleviq_web\.firebase\elev-iq\functions\.next\dev\static\chunks\node_modules_motion-dom_dist_es_0fe1d6d6._.js as it exceeds the max of 500KB.
+[BABEL] Note: The code generator has deoptimised the styling of C:\Users\User\Desktop\ElevIQ\eleviq_web\.firebase\elev-iq\functions\.next\dev\static\chunks\node_modules_next_dist_compiled_next-devtools_index_1dd7fb59.js as it exceeds the max of 500KB.
+[BABEL] Note: The code generator has deoptimised the styling of C:\Users\User\Desktop\ElevIQ\eleviq_web\.firebase\elev-iq\functions\.next\dev\static\chunks\node_modules_next_dist_client_17643121._.js as it exceeds the max of 500KB.
+[BABEL] Note: The code generator has deoptimised the styling of C:\Users\User\Desktop\ElevIQ\eleviq_web\.firebase\elev-iq\functions\.next\dev\static\chunks\node_modules_next_dist_compiled_react-dom_1e674e59._.js as it exceeds the max of 500KB.
+[BABEL] Note: The code generator has deoptimised the styling of C:\Users\User\Desktop\ElevIQ\eleviq_web\.firebase\elev-iq\functions\.next\dev\static\chunks\node_modules_zod_v4_1267b87d._.js as it exceeds the max of 500KB.
+[BABEL] Note: The code generator has deoptimised the styling of C:\Users\User\Desktop\ElevIQ\eleviq_web\.firebase\elev-iq\functions\.next\dev\server\chunks\ssr\node_modules_@firebase_firestore_dist_common-270e6a50_node_mjs_d6e2a5b5._.js as it exceeds the max of 500KB.
+[BABEL] Note: The code generator has deoptimised the styling of C:\Users\User\Desktop\ElevIQ\eleviq_web\.firebase\elev-iq\functions\.next\dev\server\chunks\ssr\node_modules_e2d1c5df._.js as it exceeds the max of 500KB.
+[BABEL] Note: The code generator has deoptimised the styling of C:\Users\User\Desktop\ElevIQ\eleviq_web\.firebase\elev-iq\functions\.next\dev\static\chunks\node_modules_@firebase_firestore_dist_e78e1253._.js as it exceeds the max of 500KB.
+[BABEL] Note: The code generator has deoptimised the styling of C:\Users\User\Desktop\ElevIQ\eleviq_web\.firebase\elev-iq\functions\.next\server\chunks\node_modules_7fbde3f5._.js as it exceeds the max of 500KB.
+[BABEL] Note: The code generator has deoptimised the styling of C:\Users\User\Desktop\ElevIQ\eleviq_web\.firebase\elev-iq\functions\.next\server\chunks\ssr\src_app_(dashboard)_bills_page_tsx_ec5065f2._.js as it exceeds the max of 500KB.
+[BABEL] Note: The code generator has deoptimised the styling of C:\Users\User\Desktop\ElevIQ\eleviq_web\.firebase\elev-iq\functions\.next\server\chunks\ssr\[root-of-the-server]__7e164ff3._.js as it exceeds the max of 500KB.
+[BABEL] Note: The code generator has deoptimised the styling of C:\Users\User\Desktop\ElevIQ\eleviq_web\.firebase\elev-iq\functions\.next\server\chunks\ssr\[root-of-the-server]__9a1eb9ba._.js as it exceeds the max of 500KB.
+[BABEL] Note: The code generator has deoptimised the styling of C:\Users\User\Desktop\ElevIQ\eleviq_web\.firebase\elev-iq\functions\.next\server\chunks\ssr\_c89aba14._.js as it exceeds the max of 500KB.
+[BABEL] Note: The code generator has deoptimised the styling of C:\Users\User\Desktop\ElevIQ\eleviq_web\.firebase\elev-iq\functions\.next\static\chunks\111e97f058749e40.js as it exceeds the max of 500KB.
+[BABEL] Note: The code generator has deoptimised the styling of C:\Users\User\Desktop\ElevIQ\eleviq_web\.firebase\elev-iq\functions\.next\static\chunks\586130ea82123080.js as it exceeds the max of 500KB.
+[BABEL] Note: The code generator has deoptimised the styling of C:\Users\User\Desktop\ElevIQ\eleviq_web\.firebase\elev-iq\hosting\_next\static\chunks\111e97f058749e40.js as it exceeds the max of 500KB.
+[BABEL] Note: The code generator has deoptimised the styling of C:\Users\User\Desktop\ElevIQ\eleviq_web\.firebase\elev-iq\hosting\_next\static\chunks\586130ea82123080.js as it exceeds the max of 500KB.
+Terminate batch job (Y/N)? 
+^CThe syntax of the command is incorrect.

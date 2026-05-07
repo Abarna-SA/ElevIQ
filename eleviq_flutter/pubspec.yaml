@@ -1,0 +1,93 @@
+name: eleviq
+description: GenAI-Powered Personal Finance Assistant
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  
+  # State Management
+  flutter_riverpod: ^2.5.1
+  riverpod_annotation: ^2.3.5
+  
+  # Navigation
+  go_router: ^13.2.0
+  
+  # Firebase
+  firebase_core: ^2.27.0
+  firebase_auth: ^4.17.8
+  cloud_firestore: ^4.15.8
+  firebase_storage: ^11.6.9
+  google_sign_in: ^6.2.1
+  
+  # HTTP & API
+  dio: ^5.4.1
+  
+  # Local Storage
+  shared_preferences: ^2.2.2
+  
+  # UI Components
+  fl_chart: ^0.66.2
+  google_fonts: ^8.0.2
+  
+  # Utilities
+  uuid: ^4.3.3
+  equatable: ^2.0.5
+  
+  # Icons
+  cupertino_icons: ^1.0.6
+  flutter_markdown: ^0.7.7+1
+  intl: ^0.20.2
+  image_picker: ^1.2.1
+  google_generative_ai: ^0.4.7
+  image_cropper: ^11.0.0
+  file_picker: ^8.0.7
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+  
+  # Code Generation
+  build_runner: ^2.4.8
+  riverpod_generator: ^2.3.11
+
+  # Assets Generation
+  flutter_launcher_icons: ^0.13.1
+  flutter_native_splash: ^2.4.0
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/images/
+    - assets/images/ElevIQ_Gold.png
+    - assets/images/ElevIQ_White.png
+    - assets/images/Square_Icon.png
+    - assets/icons/
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  web:
+    generate: true
+    image_path: "assets/images/Square_Icon.png"
+    background_color: "#1E1B4B"
+    theme_color: "#1E1B4B"
+  image_path: "assets/images/Square_Icon.png"
+  min_sdk_android: 21
+
+flutter_native_splash:
+  color: "#1E1B4B" # A deep dark purple/blue, or we can use background color from ElevIQ branding
+  image: "assets/images/Square_Icon.png"
+  android: true
+  ios: true
+  web: false # usually false because web splash screen might block app load. But let's set true just in case. Wait, native splash handles web by default in the main `web: true` or `web: false`.
+  android_gravity: center
+  ios_content_mode: center

@@ -1,0 +1,37 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "elev-iq",
+          "appId": "1:246416052776:android:5f083efde5cbe16878db1d",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "elev-iq",
+          "configurations": {
+            "android": "1:246416052776:android:5f083efde5cbe16878db1d",
+            "ios": "1:246416052776:ios:87f874fc80493d5978db1d",
+            "web": "1:246416052776:web:313cc181233df15a78db1d"
+          }
+        }
+      }
+    }
+  },
+  "hosting": {
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

@@ -1,0 +1,200 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Users collection - supports custom IDs (Elev080226001 format)
+    // Uses firebaseUid field to link to auth, not document ID
+    match /users/{userId} {
+      // Allow read for any authenticated user (needed for email lookup during signup)
+      allow read: if request.auth != null;
+      
+      // Allow create if authenticated and setting own firebaseUid
+      allow create: if request.auth != null 
+        && request.resource.data.firebaseUid == request.auth.uid;
+      
+      // Allow update/delete only if user owns the document
+      allow update, delete: if request.auth != null 
+        && resource.data.firebaseUid == request.auth.uid;
+
+      // Bills subcollection under user document
+      match /bills/{billId} {
+        allow read, write: if request.auth != null 
+          && request.auth.uid == resource.data.firebaseUid
+          || request.auth != null;
+      }
+
+      // Bill payments subcollection under user document
+      match /billPayments/{paymentId} {
+        allow read, write: if request.auth != null;
+      }
+
+      // Goals subcollection under user document
+      match /goals/{goalId} {
+        allow read, write: if request.auth != null;
+      }
+
+      // Assets subcollection under user document  
+      match /assets/{assetId} {
+        allow read, write: if request.auth != null;
+      }
+
+      // Liabilities subcollection under user document
+      match /liabilities/{liabilityId} {
+        allow read, write: if request.auth != null;
+      }
+    }
+
+    // Expenses collection - only owner can access
+    match /expenses/{expenseId} {
+      // Allow list queries and reads for authenticated users on their own docs
+      allow read: if request.auth != null;
+      
+      // Create: user must be authenticated and set themselves as owner
+      allow create: if request.auth != null 
+        && request.resource.data.userId == request.auth.uid;
+      
+      // Update: user must be authenticated and own the expense
+      allow update: if request.auth != null 
+        && resource.data.userId == request.auth.uid
+        && request.resource.data.userId == request.auth.uid;
+      
+      // Delete: user must be authenticated and own the expense
+      allow delete: if request.auth != null 
+        && resource.data.userId == request.auth.uid;
+    }
+
+    // Categories collection - default categories readable by all auth users
+    match /categories/{categoryId} {
+      allow read: if request.auth != null;
+      
+      // Custom categories - only owner can modify
+      allow write: if request.auth != null 
+        && request.auth.uid == resource.data.userId;
+      
+      allow create: if request.auth != null 
+        && request.resource.data.type == 'custom'
+        && request.resource.data.userId == request.auth.uid;
+    }
+
+    // Budgets collection - only owner can access
+    match /budgets/{budgetId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null 
+        && resource.data.userId == request.auth.uid;
+      allow create: if request.auth != null 
+        && request.resource.data.userId == request.auth.uid;
+    }
+
+    // Chat history collection - only owner can access
+    match /chat_history/{chatId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null 
+        && resource.data.userId == request.auth.uid;
+      allow create: if request.auth != null 
+        && request.resource.data.userId == request.auth.uid;
+    }
+
+    // Notifications collection - only owner can access
+    match /notifications/{notificationId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null 
+        && resource.data.userId == request.auth.uid;
+      allow create: if request.auth != null 
+        && request.resource.data.userId == request.auth.uid;
+    }
+
+    // Spending limits collection - only owner can access
+    match /limits/{limitId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null 
+        && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if request.auth != null 
+        && resource.data.userId == request.auth.uid;
+    }
+
+    // Split expenses collection - only owner can access
+    match /splits/{splitId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null 
+        && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if request.auth != null 
+        && resource.data.userId == request.auth.uid;
+    }
+
+    // Goals collection - only owner can access
+    match /goals/{goalId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null 
+        && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if request.auth != null 
+        && resource.data.userId == request.auth.uid;
+    }
+
+    // Reminders collection - only owner can access
+    match /reminders/{reminderId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null 
+        && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if request.auth != null 
+        && resource.data.userId == request.auth.uid;
+    }
+
+    // Recurring expenses collection - only owner can access
+    match /recurring/{recurringId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null 
+        && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if request.auth != null 
+        && resource.data.userId == request.auth.uid;
+    }
+
+    // Families collection - owner and members can access
+    match /families/{familyId} {
+      allow read: if request.auth != null 
+        && (resource.data.ownerId == request.auth.uid 
+        || request.auth.uid in resource.data.memberIds);
+      allow create: if request.auth != null 
+        && request.resource.data.ownerId == request.auth.uid;
+      allow update: if request.auth != null 
+        && resource.data.ownerId == request.auth.uid;
+      allow delete: if request.auth != null 
+        && resource.data.ownerId == request.auth.uid;
+    }
+
+    // Assets collection - for net worth tracking
+    match /assets/{assetId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null 
+        && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if request.auth != null 
+        && resource.data.userId == request.auth.uid;
+    }
+
+    // Liabilities collection - for net worth tracking
+    match /liabilities/{liabilityId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null 
+        && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if request.auth != null 
+        && resource.data.userId == request.auth.uid;
+    }
+
+    // Bills collection - for bill calendar
+    match /bills/{billId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null 
+        && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if request.auth != null 
+        && resource.data.userId == request.auth.uid;
+    }
+
+    // User achievements collection
+    match /achievements/{achievementId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null 
+        && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if request.auth != null 
+        && resource.data.userId == request.auth.uid;
+    }
+  }
+}

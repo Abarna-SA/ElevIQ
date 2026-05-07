@@ -1,0 +1,85 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to check if the user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // Helper function to check if the user is accessing their own data
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    // Helper function to check if updating document doesn't change owner
+    function remainsOwner(userId) {
+      return request.resource.data.userId == userId;
+    }
+
+    // Users Collection
+    match /users/{userId} {
+      allow read, write: if isOwner(userId);
+      
+      // Assets Subcollection
+      match /assets/{assetId} {
+        allow read, write: if isOwner(userId);
+      }
+      
+      // Liabilities Subcollection
+      match /liabilities/{liabilityId} {
+        allow read, write: if isOwner(userId);
+      }
+      
+      // Goals Subcollection
+      match /goals/{goalId} {
+        allow read, write: if isOwner(userId);
+      }
+      
+      // Bills Subcollection
+      match /bills/{billId} {
+        allow read, write: if isOwner(userId);
+      }
+      
+      // Bill Payments Subcollection
+      match /billPayments/{paymentId} {
+        allow read, write: if isOwner(userId);
+      }
+    }
+    
+    // Expenses Collection
+    match /expenses/{expenseId} {
+      allow read, delete: if isOwner(resource.data.userId);
+      allow create: if isOwner(request.resource.data.userId);
+      allow update: if isOwner(resource.data.userId) && remainsOwner(resource.data.userId);
+    }
+    
+    // Vehicles Collection
+    match /vehicles/{vehicleId} {
+      allow read, delete: if isOwner(resource.data.userId);
+      allow create: if isOwner(request.resource.data.userId);
+      allow update: if isOwner(resource.data.userId) && remainsOwner(resource.data.userId);
+      
+      // Maintenance Subcollection
+      match /maintenance/{maintenanceId} {
+        allow read, delete: if isOwner(get(/databases/$(database)/documents/vehicles/$(vehicleId)).data.userId);
+        allow create: if isOwner(get(/databases/$(database)/documents/vehicles/$(vehicleId)).data.userId);
+        allow update: if isOwner(get(/databases/$(database)/documents/vehicles/$(vehicleId)).data.userId);
+      }
+    }
+    
+    // Conversations Collection (Chat)
+    match /conversations/{conversationId} {
+      allow read, delete: if isOwner(resource.data.userId);
+      allow create: if isOwner(request.resource.data.userId);
+      allow update: if isOwner(resource.data.userId) && remainsOwner(resource.data.userId);
+      
+      // Messages Subcollection
+      match /messages/{messageId} {
+        allow read, delete: if isOwner(get(/databases/$(database)/documents/conversations/$(conversationId)).data.userId);
+        allow create: if isOwner(get(/databases/$(database)/documents/conversations/$(conversationId)).data.userId);
+        allow update: if isOwner(get(/databases/$(database)/documents/conversations/$(conversationId)).data.userId);
+      }
+    }
+  }
+}

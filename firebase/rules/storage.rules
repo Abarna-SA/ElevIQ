@@ -1,0 +1,63 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // ==========================================
+    // HELPER FUNCTIONS
+    // ==========================================
+    
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return request.auth.uid == userId;
+    }
+    
+    // Check file size (max 5MB)
+    function isValidSize() {
+      return request.resource.size < 5 * 1024 * 1024;
+    }
+    
+    // Check if file is an image
+    function isImage() {
+      return request.resource.contentType.matches('image/.*');
+    }
+    
+    // ==========================================
+    // USER PROFILE PICTURES
+    // ==========================================
+    match /users/{userId}/profile/{fileName} {
+      allow read: if isAuthenticated();
+      allow write: if isOwner(userId) && isImage() && isValidSize();
+      allow delete: if isOwner(userId);
+    }
+    
+    // ==========================================
+    // EXPENSE RECEIPTS
+    // ==========================================
+    match /users/{userId}/receipts/{fileName} {
+      allow read: if isOwner(userId);
+      allow write: if isOwner(userId) && isImage() && isValidSize();
+      allow delete: if isOwner(userId);
+    }
+    
+    // ==========================================
+    // CHAT ATTACHMENTS
+    // ==========================================
+    match /users/{userId}/chat-attachments/{fileName} {
+      allow read: if isOwner(userId);
+      allow write: if isOwner(userId) && isValidSize();
+      allow delete: if isOwner(userId);
+    }
+    
+    // ==========================================
+    // PUBLIC ASSETS (App icons, etc.)
+    // ==========================================
+    match /public/{allPaths=**} {
+      allow read: if true;
+      // Only admins can write (via Cloud Functions)
+    }
+  }
+}

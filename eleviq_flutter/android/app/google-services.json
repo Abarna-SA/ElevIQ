@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "246416052776",
+    "project_id": "elev-iq",
+    "storage_bucket": "elev-iq.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:246416052776:android:5f083efde5cbe16878db1d",
+        "android_client_info": {
+          "package_name": "com.eleviq.eleviq_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "246416052776-5t9d0jj8f3h3boj1ieb31snd890rr9he.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.eleviq.eleviq_flutter",
+            "certificate_hash": "17719f2975b99059a3507f87378f1581584d729d"
+          }
+        },
+        {
+          "client_id": "246416052776-kfp8qgnue95v04e2momj40neb71l6g61.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3BuA-F48HnF4RfeJ6tJdWcGOfzOawTks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "246416052776-kfp8qgnue95v04e2momj40neb71l6g61.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "246416052776-mvskhdnh3pcu4u8n30h158adkv4as6ts.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.eleviq.eleviqFlutter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
